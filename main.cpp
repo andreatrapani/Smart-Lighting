@@ -1,3 +1,13 @@
+**
+ * @file main.cpp
+ * @brief Questo programma permette l'accensione di led sia utilizzando la
+ * scheda wi-fi esp o mediante dei sensori di movimento PIR
+ * @version 1.0.0
+ * @author Mattia Adamoli & Federico Copes & Andrea Trapani & Cristian Colombini 
+ *
+ * @date 25/05/2022
+ */
+
 #include "mbed.h"
 #include "ESPAT.h"
 
