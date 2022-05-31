@@ -67,19 +67,19 @@ string htmlPage = "<html>" //codice html per accensione da esp
 void handleRequest(int linkId, string path) { // Bei HTTP Request
     if (path == "/") { // Bei direkter IP
         esp.httpReply(linkId, "200 OK", htmlPage); // Website senden
-    }else if (path == "/ledsalaon") { // Bei Pfad ledOn/ledOff, Led ein bzw ausschalten
+    }else if (path == "/ledsalaon") { //accensione salotto
         myled1 = 1;
         esp.httpReply(linkId, "200 OK", "success");
     } else if (path == "/ledsalaoff") {
         myled1 = 0;
         esp.httpReply(linkId, "200 OK", "success");
-    }else if (path == "/ledbagnoon") { // Bei Pfad ledOn/ledOff, Led ein bzw ausschalten
+    }else if (path == "/ledbagnoon") { //accensione bagno
         myled2 = 1;
         esp.httpReply(linkId, "200 OK", "success");
     } else if (path == "/ledbagnooff") {
         myled2 = 0;
         esp.httpReply(linkId, "200 OK", "success");
-    }else if (path == "/ledlettoon") { // Bei Pfad ledOn/ledOff, Led ein bzw ausschalten
+    }else if (path == "/ledlettoon") { //accensione letto
         myled3 = 1;
         esp.httpReply(linkId, "200 OK", "success");
     } else if (path == "/ledlettooff") {
@@ -98,7 +98,7 @@ int main()
         
     //Led0 = Led1 = 1; // Leds aus
     esp.resetEsp(); // ESP Reset
-    esp.initWifiStation("casa", "12345678"); // ESP Access Point Initialiseren     
+    esp.initWifiStation("casa", "12345678"); //creazione dell'access point  
     //Led0 = 0; // LED ein um zu zeigen, dass Bertl aktiv ist
     esp.initServer(handleRequest); // Request Handler initialisieren
         
@@ -107,7 +107,7 @@ int main()
     PIR3.rise(&irq_handler3);
 
     
-        if (PIR_Detected) {
+        if (PIR_Detected) { //controlllo movimento
             myled1 = 1;
             PIR_Detected = 0;
             wait(5);
@@ -119,7 +119,7 @@ int main()
         }
         
         
-        /*if (PIR2_Detected) {
+        /*if (PIR2_Detected) {  //controlllo movimento
             myled2 = 1;
             PIR2_Detected = 0;
             wait(5);
@@ -131,7 +131,7 @@ int main()
         }
         
         
-        if (PIR3_Detected) {
+        if (PIR3_Detected) { //controlllo movimento
             myled3 = 1;
             PIR3_Detected = 0;
             wait(5);
